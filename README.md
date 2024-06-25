@@ -11,4 +11,4 @@ Utilisation des services suivants :
 <br>
 <br>
 <br>
-\* au sens du Code du patrimoine
+* au sens du Code du patrimoine
