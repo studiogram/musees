@@ -5,9 +5,10 @@ import Info from "./components/info/Info";
 import Loader from "./components/loader/Loader";
 
 import "./App.scss";
+import Cities from "./components/cities/Cities";
 
 const App = () => {
-  const { setIsMobile } = useContext(StateContext);
+  const { isMobile, setIsMobile } = useContext(StateContext);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -24,15 +25,24 @@ const App = () => {
 
   return (
     <main
-      className="p-4"
+      className="p-4 h-dvh flex flex-col"
       style={{ backgroundColor: process.env.REACT_APP_COLOR }}
     >
       <h1 className="text-center text-white text-2xl font-bold">
         Musées de France
       </h1>
-      <MapMuseum />
-      <Info />
-      <Loader />
+      <div
+        className={`shrink w-full h-full overflow-hidden flex ${
+          isMobile ? "flex-col" : "flex-row"
+        }`}
+      >
+        <div className="relative shrink w-full h-full">
+          <Cities />
+          <MapMuseum />
+          <Loader />
+        </div>
+        <Info />
+      </div>
     </main>
   );
 };
