@@ -3,9 +3,11 @@ import { StateContext } from "./context/state.context";
 import MapMuseum from "./components/map/Map";
 import Info from "./components/info/Info";
 import Loader from "./components/loader/Loader";
+import Cities from "./components/cities/Cities";
 
 import "./App.scss";
-import Cities from "./components/cities/Cities";
+import "./styles/fonts.scss";
+import Header from "./components/header/Header";
 
 const App = () => {
   const { isMobile, setIsMobile } = useContext(StateContext);
@@ -28,9 +30,7 @@ const App = () => {
       className="p-4 h-dvh flex flex-col"
       style={{ backgroundColor: process.env.REACT_APP_COLOR }}
     >
-      <h1 className="text-center text-white text-2xl font-bold">
-        Musées de France
-      </h1>
+      <Header />
       <div
         className={`shrink w-full h-full overflow-hidden flex ${
           isMobile ? "flex-col" : "flex-row"
