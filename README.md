@@ -7,4 +7,4 @@ Utilisation des services suivants :
 - [data.gouv.fr](https://data.gouv.fr)
 - [mapbox](https://www.mapbox.com/)
 
-/\* au sens du Code du patrimoine
+\* au sens du Code du patrimoine
