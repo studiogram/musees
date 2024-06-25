@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import { StateContext } from "./context/state.context";
-import InfoMuseum from "./components/info/InfoMuseum";
-import MapMuseum from "./components/map/MapMuseum";
+import MapMuseum from "./components/map/Map";
+import Info from "./components/info/Info";
+import Loader from "./components/loader/Loader";
 
 import "./App.scss";
 
@@ -22,9 +23,16 @@ const App = () => {
   };
 
   return (
-    <main>
+    <main
+      className="p-4"
+      style={{ backgroundColor: process.env.REACT_APP_COLOR }}
+    >
+      <h1 className="text-center text-white text-2xl font-bold">
+        Musées de France
+      </h1>
       <MapMuseum />
-      <InfoMuseum />
+      <Info />
+      <Loader />
     </main>
   );
 };
