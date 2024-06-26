@@ -1,5 +1,5 @@
-function getHttpURL(url: string): string {
+export const getHttpURL = (url: string): string => {
   return url.startsWith("http://") || url.startsWith("https://")
     ? url
     : `https://${url}`;
-}
+};

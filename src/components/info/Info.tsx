@@ -5,6 +5,7 @@ import { useContext, useEffect, useRef } from "react";
 import { MapContext } from "../../context/map.context";
 import { StateContext } from "../../context/state.context";
 import { addPhoneNumberSpace, formatPhoneNumber } from "../../utils/phone";
+import { getHttpURL } from "../../utils/url";
 
 import "./Info.scss";
 
