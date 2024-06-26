@@ -10,6 +10,7 @@ const MarkerMuseum = () => {
     setCycleDuration,
     setCycleDistance,
     currentMuseum,
+    isActiveMuseum,
     setCurrentMuseum,
     setIsActiveMuseum,
     setPointSize,
@@ -54,21 +55,23 @@ const MarkerMuseum = () => {
   };
 
   return (
-    currentMuseum && (
-      <Marker
-        longitude={currentMuseum.longitude}
-        latitude={currentMuseum.latitude}
-        anchor="bottom"
-        style={{ width: 47, height: 60, cursor: "pointer" }}
-        onClick={handleMuseeClick}
-      >
-        <img
-          alt="remove current museum"
-          src="./delete.svg"
-          style={{ width: 47, height: 60 }}
-        />
-      </Marker>
-    )
+    <>
+      {isActiveMuseum && currentMuseum && (
+        <Marker
+          longitude={currentMuseum.longitude}
+          latitude={currentMuseum.latitude}
+          anchor="bottom"
+          style={{ width: 47, height: 60, cursor: "pointer" }}
+          onClick={handleMuseeClick}
+        >
+          <img
+            alt="remove current museum"
+            src="./delete.svg"
+            style={{ width: 47, height: 60 }}
+          />
+        </Marker>
+      )}
+    </>
   );
 };
 export default MarkerMuseum;
