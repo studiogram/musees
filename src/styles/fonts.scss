@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "gram";
+  src: url("../fonts/Moderat-Medium.eot");
+  src: url("../fonts/Moderat-Medium.woff") format("woff"),
+    url("../fonts/Moderat-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  font-family: "gram";
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
