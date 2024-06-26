@@ -71,7 +71,7 @@ const Info = () => {
           <Button
             icon="/website.svg"
             text="voir le site web"
-            url={currentMuseum.website}
+            url={getHttpURL(currentMuseum.website)}
           />
         )}
         <CyclingInfo />
