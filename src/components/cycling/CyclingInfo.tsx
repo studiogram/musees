@@ -71,7 +71,7 @@ const CyclingInfo = () => {
   return (
     <>
       {cycleDistance && cycleDuration ? (
-        <div className="flex py-6 font-bold">
+        <div className="flex pt-4 md:py-6 font-bold">
           <p className="w-1/2 text-white">
             <span className="text-5xl">{getDistance(cycleDistance)}</span>km
           </p>

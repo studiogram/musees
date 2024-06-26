@@ -24,6 +24,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log("token: ", process.env.REACT_APP_MAPBOX_TOKEN);
     if (typeof window !== "undefined") {
       window.addEventListener("resize", checkMobile);
       window.addEventListener("orientationchange", checkMobile);

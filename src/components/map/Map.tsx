@@ -76,7 +76,6 @@ const MapMuseum = ({ mapSize }: { mapSize: number | undefined }) => {
         "text-field": "{point_count_abbreviated}",
         "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
         "text-size": currentMuseum ? 0 : 18,
-        "text-size-transition": { duration: 500 },
       },
       paint: {
         "text-color": "#FFFFFF",

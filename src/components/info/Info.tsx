@@ -49,7 +49,7 @@ const Info = () => {
         currentMuseum ? "info--hasmuseum" : ""
       }`}
     >
-      <div className="info-museum__content | w-full h-full p-6 text-center md:text-start overflow-scroll">
+      <div className="info-museum__content | w-full h-full pt-4 md:pt-6 md:px-6 text-center md:text-start overflow-scroll">
         <h2 className="capitalize text-white text-xl md:text-2xl font-bold">
           {currentMuseum?.name}
         </h2>
