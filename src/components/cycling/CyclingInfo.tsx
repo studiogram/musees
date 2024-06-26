@@ -71,11 +71,11 @@ const CyclingInfo = () => {
   return (
     <>
       {cycleDistance && cycleDuration ? (
-        <div className="flex pt-4 md:py-6 font-bold">
-          <p className="w-1/2 text-white">
+        <div className="flex flex-wrap pt-4 md:py-6 font-bold">
+          <p className=" text-white pe-4">
             <span className="text-5xl">{getDistance(cycleDistance)}</span>km
           </p>
-          <p className="w-1/2">
+          <p>
             <span className="text-5xl">
               {formatDoubleDigit(hours ? hours : 0)}
             </span>

@@ -3,7 +3,7 @@ import "./Button.scss";
 
 const Button = ({ className, icon, text, url }: ButtonType) => {
   return (
-    <div className={`my-2 ${className}`}>
+    <div className={`my-2 ${className ? className : ""}`}>
       <a
         href={url}
         target="_blank"
