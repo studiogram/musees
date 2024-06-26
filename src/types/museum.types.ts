@@ -26,6 +26,8 @@ export type MapContextType = {
   setCyclePath: React.Dispatch<React.SetStateAction<Feature | null>>;
   pointSize: number;
   setPointSize: React.Dispatch<React.SetStateAction<number>>;
+  isActiveMuseum: boolean;
+  setIsActiveMuseum: React.Dispatch<React.SetStateAction<boolean>>;
   currentMuseum: MuseumType | null;
   setCurrentMuseum: React.Dispatch<React.SetStateAction<MuseumType | null>>;
 };

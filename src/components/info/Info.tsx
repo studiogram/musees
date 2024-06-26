@@ -1,8 +1,10 @@
 import gsap from "gsap";
 import CyclingInfo from "../cycling/CyclingInfo";
+import Button from "../button/Button";
 import { useContext, useEffect, useRef } from "react";
 import { MapContext } from "../../context/map.context";
 import { StateContext } from "../../context/state.context";
+import { addPhoneNumberSpace, formatPhoneNumber } from "../../utils/phone";
 
 import "./Info.scss";
 
@@ -47,13 +49,31 @@ const Info = () => {
         currentMuseum ? "info--hasmuseum" : ""
       }`}
     >
-      <div className="info-museum__content | w-full h-full p-6">
-        <h2>{currentMuseum?.name}</h2>
-        {currentMuseum?.address} <br />
-        {currentMuseum?.postalCode}, {currentMuseum?.city}
-        <br />
-        {currentMuseum?.phone} <br />
-        {currentMuseum?.website} <br />
+      <div className="info-museum__content | w-full h-full p-6 text-center md:text-start overflow-scroll">
+        <h2 className="capitalize text-white text-xl md:text-2xl font-bold">
+          {currentMuseum?.name}
+        </h2>
+        <div className="mt-2 mb-4 md:my-4 text-darkgreen">
+          <p>
+            {currentMuseum?.address}, {currentMuseum?.postalCode}{" "}
+            {currentMuseum?.city}
+          </p>
+        </div>
+
+        {currentMuseum?.phone && (
+          <Button
+            icon="/phone.svg"
+            text={addPhoneNumberSpace(formatPhoneNumber(currentMuseum.phone))}
+            url={`tel:${formatPhoneNumber(currentMuseum.phone)}`}
+          />
+        )}
+        {currentMuseum?.website && (
+          <Button
+            icon="/website.svg"
+            text="voir le site web"
+            url={currentMuseum.website}
+          />
+        )}
         <CyclingInfo />
       </div>
     </div>

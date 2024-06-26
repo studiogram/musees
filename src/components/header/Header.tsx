@@ -6,9 +6,9 @@ const Header = () => {
       <img src="/gram.svg" alt="Studio Gram" className="w-12 me-4" />
       <div>
         <h1 className="text-center text-white text-2xl md:text-4xl font-bold">
-          Musées de France<span>*</span>
+          Musées de France<span className="text-darkgreen">*</span>
         </h1>
-        <p>*au sens du Code du patrimoine</p>
+        <p className="text-darkgreen">*au sens du Code du patrimoine</p>
       </div>
     </header>
   );

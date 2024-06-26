@@ -16,7 +16,7 @@ import { MapContext } from "../../context/map.context";
 import "./Map.scss";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MapMuseum = () => {
+const MapMuseum = ({ mapSize }: { mapSize: number | undefined }) => {
   const mapRef = useRef<MapRef>(null);
   const [cursor, setCursor] = useState("auto");
   const { setIsLoading } = useContext(StateContext);
@@ -30,6 +30,7 @@ const MapMuseum = () => {
     setCyclePath,
     setCycleDistance,
     setCycleDuration,
+    setIsActiveMuseum,
   } = useContext(MapContext);
   const unclusteredMuseum = useMemo<LayerProps>(() => {
     return {
@@ -125,6 +126,7 @@ const MapMuseum = () => {
           }
         });
       } else if (feature.geometry.type === "Point" && feature.properties) {
+        setIsActiveMuseum(true);
         setCurrentMuseum({
           name: feature.properties.nom_officiel_du_musee,
           address: feature.properties.adresse || feature.properties.lieu,
@@ -142,12 +144,14 @@ const MapMuseum = () => {
   useEffect(() => {
     if (!mapRef.current) return;
     mapRef.current.resize();
-  }, [currentMuseum, mapRef]);
+  }, [currentMuseum, mapRef, mapSize]);
 
   useEffect(() => {
     if (!mapRef.current || !currentCity) return;
+    setIsActiveMuseum(false);
     setCurrentMuseum(null);
     setPointSize(10);
+    setZoom(12);
     setCyclePath(null);
     setCycleDistance(null);
     setCycleDuration(null);

@@ -8,19 +8,6 @@ import "./Cities.scss";
 
 const Cities = () => {
   const { setCurrentCity } = useContext(MapContext);
-  // const [options, setOptions] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("https://geo.api.gouv.fr/communes?fields=nom")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const cities = data.map((city: { nom: string }) => ({
-  //         value: city.nom,
-  //         label: city.nom,
-  //       }));
-  //       setOptions(cities);
-  //     });
-  // }, []);
 
   const loadOptions = (
     inputValue: string,
@@ -42,14 +29,16 @@ const Cities = () => {
         callback(cities);
       });
   };
+
+  const onChangeCity = (e: SingleValue<{ value: CityType }>) =>
+    e && setCurrentCity(e.value!);
+
   return (
     <div className="select">
       <AsyncSelect
         cacheOptions
         classNamePrefix="react-select"
-        onChange={(e: SingleValue<{ value: CityType }>) =>
-          e && setCurrentCity(e.value!)
-        }
+        onChange={onChangeCity}
         loadOptions={loadOptions}
         noOptionsMessage={() => null}
         loadingMessage={() => "Chargement..."}

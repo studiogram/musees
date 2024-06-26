@@ -20,6 +20,8 @@ export const MapContext = createContext<MapContextType>({
   setCyclePath: () => null,
   pointSize: 10,
   setPointSize: () => null,
+  isActiveMuseum: false,
+  setIsActiveMuseum: () => null,
   currentMuseum: null,
   setCurrentMuseum: () => null,
 });
@@ -31,6 +33,7 @@ export const MapProvider: React.FC<MapProviderProps> = ({ children }) => {
   const [cycleDistance, setCycleDistance] = useState<number | null>(null);
   const [cycleDuration, setCycleDuration] = useState<number | null>(null);
   const [pointSize, setPointSize] = useState<number>(10);
+  const [isActiveMuseum, setIsActiveMuseum] = useState<boolean>(false);
   const [currentMuseum, setCurrentMuseum] = useState<MuseumType | null>(null);
   const value = {
     zoom,
@@ -45,6 +48,8 @@ export const MapProvider: React.FC<MapProviderProps> = ({ children }) => {
     setCycleDuration,
     pointSize,
     setPointSize,
+    isActiveMuseum,
+    setIsActiveMuseum,
     currentMuseum,
     setCurrentMuseum,
   };

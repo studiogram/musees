@@ -11,6 +11,7 @@ const MarkerMuseum = () => {
     setCycleDistance,
     currentMuseum,
     setCurrentMuseum,
+    setIsActiveMuseum,
     setPointSize,
   } = useContext(MapContext);
 
@@ -41,11 +42,15 @@ const MarkerMuseum = () => {
         pitch: 0,
       });
     }
-    setCurrentMuseum(null);
+    setIsActiveMuseum(false);
     setPointSize(10);
     setCyclePath(null);
     setCycleDistance(null);
     setCycleDuration(null);
+
+    setTimeout(() => {
+      setCurrentMuseum(null);
+    }, 1000);
   };
 
   return (

@@ -1,0 +1,9 @@
+$green: #15b681;
+
+.text-green {
+  color: $green;
+}
+
+.text-darkgreen {
+  color: darken($green, 20%);
+}

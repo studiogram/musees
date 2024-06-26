@@ -1,13 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MapContext } from "../../context/map.context";
 import { StateContext } from "../../context/state.context";
+import { getDistance } from "../../utils/distance";
+
+import "./Cycling.scss";
+import { formatTime } from "../../utils/duration";
+import { formatDoubleDigit } from "../../utils/numbers";
 
 const CyclingInfo = () => {
   const { setIsLoading, setCurrentLocation } = useContext(StateContext);
-  const { currentMuseum, setCyclePath, setCycleDistance, setCycleDuration } =
-    useContext(MapContext);
+  const {
+    currentMuseum,
+    setCyclePath,
+    cycleDistance,
+    setCycleDistance,
+    cycleDuration,
+    setCycleDuration,
+  } = useContext(MapContext);
 
   const [error, setError] = useState<string | null>(null);
+  const [hours, setHours] = useState<number>(0);
+  const [minutes, setMinutes] = useState<number>(0);
 
   const getLocation = async () => {
     setIsLoading(true);
@@ -47,10 +60,42 @@ const CyclingInfo = () => {
     );
   };
 
+  useEffect(() => {
+    if (cycleDuration) {
+      const { hours, minutes } = formatTime(cycleDuration);
+      setHours(hours ? hours : 0);
+      setMinutes(minutes ? minutes : 0);
+    }
+  }, [cycleDuration]);
+
   return (
     <>
-      {error && <p>{error}</p>}
-      <button onClick={getLocation}>Button</button>
+      {cycleDistance && cycleDuration ? (
+        <div className="flex py-6 font-bold">
+          <p className="w-1/2 text-white">
+            <span className="text-5xl">{getDistance(cycleDistance)}</span>km
+          </p>
+          <p className="w-1/2">
+            <span className="text-5xl">
+              {formatDoubleDigit(hours ? hours : 0)}
+            </span>
+            h
+            <span className="text-5xl">
+              {formatDoubleDigit(minutes ? minutes : 0)}
+            </span>
+          </p>
+        </div>
+      ) : (
+        <>
+          {error && <p className="text-red-500 mb-2">{error}</p>}
+          <button
+            className="cycling | text-green bg-black py-2 px-5"
+            onClick={getLocation}
+          >
+            M'y rendre en vélo
+          </button>
+        </>
+      )}
     </>
   );
 };
