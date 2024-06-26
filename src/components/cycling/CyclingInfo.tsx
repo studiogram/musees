@@ -26,10 +26,6 @@ const CyclingInfo = () => {
     setIsLoading(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
-        console.log("stop loading");
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-
         const response = await fetch(
           `https://api.mapbox.com/directions/v5/mapbox/cycling/${position.coords.longitude},${position.coords.latitude};${currentMuseum?.longitude},${currentMuseum?.latitude}?alternatives=true&annotations=duration,distance&continue_straight=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`,
           {
